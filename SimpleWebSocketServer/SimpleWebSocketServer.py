@@ -598,12 +598,7 @@ class SimpleWebSocketServer(object):
 
    def _handleClose(self, client):
       client.client.close()
-      # only call handleClose when we have a successful websocket connection
-      if client.handshaked:
-         try:
-            client.handleClose()
-         except:
-            pass
+      client.handleClose()
 
    def serveonce(self):
       writers = []
